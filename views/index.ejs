@@ -9,6 +9,7 @@
 <body>
     <h1>**INDEX PAGE**</h1>
     <h3>All trips</h3>
+    <p><%= deleted %> </p>
     <a href="/trips/new">Post a trip</a>
     <% for (let t of trip){ %>
         <li><a href="/trips/<%= t._id %>"><%= t.place %></a></li>

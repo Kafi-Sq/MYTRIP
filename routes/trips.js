@@ -16,7 +16,8 @@ router.get('/new', (req, res) => {
 router.post('/', async(req, res) => {
     const trip = new Trip(req.body.trip)
     await trip.save()
-    res.redirect('/trips')
+    req.flash('success', 'Trip Added!')
+    res.redirect(`/trips/${trip._id}`)
 })
 
 router.get('/:id', catchAsync(async(req, res) => {
@@ -40,6 +41,7 @@ router.put('/:id', catchAsync, (async(req, res) => {
 router.delete('/:id', catchAsync(async(req, res) => {
     const {id} = req.params
     await Trip.findByIdAndDelete(id)
+    req.flash('delete', 'Deleted Trip!')
     res.redirect('/trips')
 }))
 

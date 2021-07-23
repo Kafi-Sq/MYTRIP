@@ -20,6 +20,7 @@ router.delete('/:commentId', async(req, res) => {
     const {id, commentId} = req.params
     await Trip.findByIdAndUpdate(id, {$pull: {comments: commentId}})
     await Comment.findByIdAndDelete(commentId)
+    req.flash('delete', 'Deleted!')
     res.redirect(`/trips/${id}`)
 })
 

@@ -7,6 +7,8 @@ const ExpressError = require('./utils/ExpressError')
 const mongoose = require('mongoose')
 const tripRoutes = require('./routes/trips')
 const commentRoutes = require('./routes/comments')
+const session = require('express-session')
+const flash = require('connect-flash')
 
 // connecting to Mongodb
 mongoose.connect('mongodb://localhost:27017/myTrip', {
@@ -27,6 +29,25 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
+const sessionConfig = {
+    secret: 'Changethis',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig))
+app.use(flash())
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success')
+    res.locals.deleted = req.flash('delete')
+    next()
+})
 
 // routes
 app.get('/', (req, res) => {
