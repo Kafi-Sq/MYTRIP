@@ -13,6 +13,21 @@
         <h3>USER</h3>
         <img src="https://images.unsplash.com/photo-1567693221917-fefc994808ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=877&q=80" alt="">
         <p><%= trip.description %> </p>
+        <form action="/trips/<%= trip._id %>/comments" method="POST">
+            <h2>Comments:</h2>
+            <label for="comment">Add comment</label>
+            <br>
+            <textarea name="comment[body]" id="comment" cols="30" rows="4" required></textarea>
+            <button>Add</button>
+        </form>
+        <div>
+            <% for(c of trip.comments){ %> 
+                <p><%= c.body %></p>
+                <form action="/trips/<%= trip._id%>/comments/<%= c._id %>?_method=DELETE" method="POST">
+                    <button>Delete</button>
+                </form>
+            <% } %> 
+        </div>
         <button><a href="/trips">Go Back</a></button><br>
         <button><a href="/trips/<%= trip._id %>/edit">Edit</a></button>
         <form action="/trips/<%= trip._id %>?_method=DELETE" method="POST">

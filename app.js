@@ -3,10 +3,12 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const Trip = require('./models/trips')
+const Comment = require('./models/comments')
 const methodOverride = require('method-override')
 const catchAsync = require('./utils/catchAsync')
 const ExpressError = require('./utils/ExpressError')
 const mongoose = require('mongoose')
+const comments = require('./models/comments')
 
 // connecting to Mongodb
 mongoose.connect('mongodb://localhost:27017/myTrip', {
@@ -50,9 +52,25 @@ app.post('/trips', catchAsync, (async(req, res) => {
 
 app.get('/trips/:id', catchAsync(async(req, res) => {
     const id = req.params.id
-    const trip = await Trip.findById(id)
+    const trip = await Trip.findById(id).populate('comments')
     res.render('show', {trip})
 }))
+
+app.post('/trips/:id/comments', catchAsync(async(req, res) => {
+    const trip = await Trip.findById(req.params.id)
+    const comment = new Comment(req.body.comment)
+    trip.comments.push(comment)
+    await comment.save()
+    await trip.save()
+    res.redirect(`/trips/${trip._id}`)
+}))
+
+app.delete('/trips/:id/comments/:commentId', async(req, res) => {
+    const {id, commentId} = req.params
+    await Trip.findByIdAndUpdate(id, {$pull: {comments: commentId}})
+    await Comment.findByIdAndDelete(commentId)
+    res.redirect(`/trips/${id}`)
+})
 
 app.get('/trips/:id/edit', catchAsync(async(req, res) => {
     const id = req.params.id
