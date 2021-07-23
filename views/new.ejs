@@ -11,16 +11,12 @@
     <h2>Post a trip</h2>
     <form action="/trips" method="POST">
     <div>
-        <label for="title">Name Your Trip:</label>
-        <input type="text" name="trip[title]" id="title">
+        <label for="place">Where did you visit?</label>
+        <input type="text" name="trip[place]" id="place" required>
     </div>
     <div>
-        <label for="location">Location:</label>
-        <input type="text" name="trip[location]" id="location">
-    </div>
-    <div>
-        <label for="description">Bio:</label>
-        <input type="text" name="trip[description]" id="description">
+        <label for="description">Description:</label>
+        <textarea name="trip[description]" id="description" cols="30" rows="4" required></textarea>
     </div>
     
         <button>Save Trip</button>

@@ -11,7 +11,7 @@
     <h3>All trips</h3>
     <a href="/trips/new">Post a trip</a>
     <% for (let t of trip){ %>
-        <li><a href="/trips/<%= t._id %>"><%= t.location %></a></li>
+        <li><a href="/trips/<%= t._id %>"><%= t.place %></a></li>
     <% } %>  
 </body>
 </html>

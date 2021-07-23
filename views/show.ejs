@@ -9,9 +9,10 @@
 <body>
     <h1>**DETAILS PAGE**</h1>
     <div>
-        <h3>Trip to: <%= trip.location %> </h3>
-        <p>Description: <%= trip.description %></p>
+        <h1><%= trip.place %></h1>
+        <h3>USER</h3>
         <img src="https://images.unsplash.com/photo-1567693221917-fefc994808ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=877&q=80" alt="">
+        <p><%= trip.description %> </p>
         <button><a href="/trips">Go Back</a></button><br>
         <button><a href="/trips/<%= trip._id %>/edit">Edit</a></button>
         <form action="/trips/<%= trip._id %>?_method=DELETE" method="POST">

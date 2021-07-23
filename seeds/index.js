@@ -23,8 +23,7 @@ const seedDB = async () => {
     for (let i = 0; i < 20; i++){
         const random1000 = Math.floor(Math.random() * 1000)
         const trip = new Trip({
-            title: `My trip to: `,
-            location: `${cities[random1000].city}, ${cities[random1000].state}`,
+            place: `${cities[random1000].city}, ${cities[random1000].state}`,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, nisi'
         })
     await trip.save()

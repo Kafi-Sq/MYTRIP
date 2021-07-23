@@ -11,16 +11,12 @@
     <h2>Edit Trip Details</h2>
     <form action="/trips/<%= trip._id%>?_method=PUT" method="POST">
             <div>
-                <label for="title">Name Your Trip:</label>
-                <input type="text" name="trip[title]" id="title" value="<%= trip.title %>">
+                <label for="place">Edit Location</label>
+                <input type="text" name="trip[place]" id="place" value="<%= trip.place %>" required>
             </div>
             <div>
-                <label for="location">Location:</label>
-                <input type="text" name="trip[location]" id="location" value="<%= trip.location %>">
-            </div>
-            <div>
-                <label for="description">Bio:</label>
-                <input type="text" name="trip[description]" id="description" value="<%= trip.description %>">
+                <label for="description">Edit Description</label>
+                <textarea name="trip[description]" id="description" cols="30" rows="4" required><%= trip.description %></textarea>
             </div>
             
             <button>Edit</button>
