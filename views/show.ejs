@@ -18,9 +18,10 @@
         <p><%= success %> </p>
         <p><%= deleted %> </p>
         <h1><%= trip.place %></h1>
-        <h3>USER</h3>
+        <h2><%= trip.owner.username %></h2>
         <img class="img" src="https://images.unsplash.com/photo-1567693221917-fefc994808ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=877&q=80" alt="">
-        <p><%= trip.description %> </p>
+        <p><%= trip.description %></p>
+        <% if(currentUser) {%> 
         <form action="/trips/<%= trip._id %>/comments" method="POST">
             <h2>Comments:</h2>
             <label for="comment">Add comment</label>
@@ -28,19 +29,25 @@
             <textarea name="comment[body]" id="comment" cols="30" rows="4" required></textarea>
             <button>Add</button>
         </form>
+        <% } %> 
         <div>
-            <% for(c of trip.comments){ %> 
+            <% for(c of trip.comments){ %>
+                <p><b><%= c.owner.username %> - </b></p> 
                 <p><%= c.body %></p>
+                <% if(currentUser && c.owner.equals(currentUser._id)) {%> 
                 <form action="/trips/<%= trip._id%>/comments/<%= c._id %>?_method=DELETE" method="POST">
                     <button>Delete</button>
                 </form>
+                <% } %> 
             <% } %> 
         </div>
         <button><a href="/trips">Go Back</a></button><br>
+        <% if(currentUser && trip.owner.equals(currentUser._id)) {%> 
         <button><a href="/trips/<%= trip._id %>/edit">Edit</a></button>
         <form action="/trips/<%= trip._id %>?_method=DELETE" method="POST">
-        <button>Delete</button>
-    </form>
+            <button>Delete</button>
+        </form>
+        <% } %> 
     </div>
 </body>
 </html>

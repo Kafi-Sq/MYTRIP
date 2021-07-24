@@ -5,6 +5,10 @@ const Comment = require('./comments')
 const tripSchema = new Schema({
     place: String,
     description: String,
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     comments: [
         {
             type: Schema.Types.ObjectId,
