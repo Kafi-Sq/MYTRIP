@@ -7,8 +7,20 @@
     <title>All Trips</title>
 </head>
 <body>
+    <nav>
+        <% if (!currentUser) {%>
+            <a href="/login">Log In</a>
+            <a href="/signup">Sign Up</a>
+        <% } else {%>  
+            <a href="/logout">Log Out</a>
+        <% } %> 
+    </nav>
     <h1>**INDEX PAGE**</h1>
+    <p><%= success %> </p>
     <h3>All trips</h3>
+    <% if (currentUser) {%> 
+    <p><%= currentUser.username %></p>
+    <% } %> 
     <p><%= deleted %> </p>
     <a href="/trips/new">Post a trip</a>
     <% for (let t of trip){ %>

@@ -12,13 +12,12 @@
     <form action="/trips/<%= trip._id%>?_method=PUT" method="POST">
             <div>
                 <label for="place">Edit Location</label>
-                <input type="text" name="trip[place]" id="place" value="<%= trip.place %>" required>
+                <input type="text" name="trip[place]" id="place" value="<%= trip.place%>" required>
             </div>
             <div>
                 <label for="description">Edit Description</label>
-                <textarea name="trip[description]" id="description" cols="30" rows="4" required><%= trip.description %></textarea>
+                <textarea name="trip[description]" id="description" cols="30" rows="4" required><%= trip.description%></textarea>
             </div>
-            
             <button>Edit</button>
     </form>
 </body>

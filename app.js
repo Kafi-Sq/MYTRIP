@@ -7,8 +7,12 @@ const ExpressError = require('./utils/ExpressError')
 const mongoose = require('mongoose')
 const tripRoutes = require('./routes/trips')
 const commentRoutes = require('./routes/comments')
+const userRoutes = require('./routes/users')
 const session = require('express-session')
 const flash = require('connect-flash')
+const passport = require('passport')
+const localStrategy = require('passport-local')
+const User = require('./models/users')
 
 // connecting to Mongodb
 mongoose.connect('mongodb://localhost:27017/myTrip', {
@@ -43,9 +47,18 @@ const sessionConfig = {
 app.use(session(sessionConfig))
 app.use(flash())
 
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new localStrategy(User.authenticate()))
+
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
 app.use((req, res, next) => {
+    res.locals.currentUser = req.user
     res.locals.success = req.flash('success')
     res.locals.deleted = req.flash('delete')
+    res.locals.error = req.flash('error')
     next()
 })
 
@@ -54,6 +67,7 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
+app.use('/', userRoutes)
 app.use('/trips', tripRoutes)
 app.use('/trips/:id/comments', commentRoutes)
 
