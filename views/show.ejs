@@ -19,7 +19,9 @@
         <p><%= deleted %> </p>
         <h1><%= trip.place %></h1>
         <h2><%= trip.owner.username %></h2>
-        <img class="img" src="https://images.unsplash.com/photo-1567693221917-fefc994808ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=877&q=80" alt="">
+        <% for (let img of trip.images) {%>
+            <img src="<%= img.url %>" alt="...">
+        <% } %>  
         <p><%= trip.description %></p>
         <% if(currentUser) {%> 
         <form action="/trips/<%= trip._id %>/comments" method="POST">

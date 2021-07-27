@@ -5,6 +5,12 @@ const Comment = require('./comments')
 const tripSchema = new Schema({
     place: String,
     description: String,
+    images: [
+        {
+            url: String,
+            filename: String
+        }
+    ],
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'

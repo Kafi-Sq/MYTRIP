@@ -9,7 +9,7 @@
 <body>
     <h1>**CREATE PAGE**</h1>
     <h2>Post a trip</h2>
-    <form action="/trips" method="POST">
+    <form action="/trips" method="POST" enctype="multipart/form-data">
     <div>
         <label for="place">Where did you visit?</label>
         <input type="text" name="trip[place]" id="place" required>
@@ -17,6 +17,9 @@
     <div>
         <label for="description">Description:</label>
         <textarea name="trip[description]" id="description" cols="30" rows="4" required></textarea>
+    </div>
+    <div>
+        <input type="file" name="image" multiple>
     </div>
     
         <button>Save Trip</button>

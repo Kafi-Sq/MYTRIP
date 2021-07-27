@@ -23,9 +23,17 @@ const seedDB = async () => {
     for (let i = 0; i < 10; i++){
         const random1000 = Math.floor(Math.random() * 1000)
         const trip = new Trip({
-            owner: "60fb75b029fa2052f8706778",
+            owner: "60ff6faced668109ecf9b7d6",
             place: `${cities[random1000].city}, ${cities[random1000].state}`,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, nisi',
+            images: [{
+                url: 'https://res.cloudinary.com/nbrvchhc/image/upload/v1627352845/NOMADS/zriul4yif33glk8jujik.jpg',
+                filename: 'NOMADS/zriul4yif33glk8jujik'
+              },
+              {
+                url: 'https://res.cloudinary.com/nbrvchhc/image/upload/v1627352845/NOMADS/aek2a3eo3yyiudb9vs2y.jpg',
+                filename: 'NOMADS/aek2a3eo3yyiudb9vs2y'
+              }]
         })
     await trip.save()
     console.log(trip)
