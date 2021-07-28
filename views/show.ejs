@@ -7,10 +7,13 @@
     <title>Details</title>
     <style>
         .img {
-            width: 300px;
-            height: 200px;
+            width: 20%;
+            height: auto;
         }
-    </style>
+    </style>    
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
 </head>
 <body>
     <h1>**DETAILS PAGE**</h1>
@@ -23,6 +26,7 @@
             <img src="<%= img.url %>" alt="...">
         <% } %>  
         <p><%= trip.description %></p>
+        <div id='map' style='width: 400px; height: 300px;'></div>
         <% if(currentUser) {%> 
         <form action="/trips/<%= trip._id %>/comments" method="POST">
             <h2>Comments:</h2>
@@ -51,5 +55,22 @@
         </form>
         <% } %> 
     </div>
+    <script>
+        const trip = <%-JSON.stringify(trip)%>
+    </script>
+<script>
+    mapboxgl.accessToken = '<%-process.env.TOKEN%>';
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: trip.geometry.coordinates, // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+
+    new mapboxgl.Marker()
+        .setLngLat(trip.geometry.coordinates)
+        .addTo(map)
+</script>
 </body>
+
 </html>

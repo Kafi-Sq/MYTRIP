@@ -2,9 +2,22 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Comment = require('./comments')
 
+const opts = { toJSON: { virtuals: true } };
+
 const tripSchema = new Schema({
     place: String,
     description: String,
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
     images: [
         {
             url: String,
@@ -21,7 +34,13 @@ const tripSchema = new Schema({
             ref: 'Comment'
         }
     ]
-})
+}, opts)
+
+tripSchema.virtual('properties.popUpMarkup').get(function () {
+    return `
+    <strong><a href="/trips/${this._id}">${this.place}</a><strong>
+    <p>${this.owner.username.substring(0, 20)}</p>`
+});
 
 tripSchema.post('findOneAndDelete', async function(doc) {
     if(doc){
