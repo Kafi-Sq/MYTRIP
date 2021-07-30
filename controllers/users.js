@@ -1,7 +1,7 @@
 const User = require('../models/users')
 
 module.exports.signup = (req, res) => {
-    res.render('signup')
+    res.render('users/signup')
 }
 
 module.exports.postSignup = async(req, res, next) => {
@@ -21,7 +21,7 @@ module.exports.postSignup = async(req, res, next) => {
 }
 
 module.exports.login = (req, res) => {
-    res.render('login')
+    res.render('users/login')
 }
 
 module.exports.postLogin = (req, res) => {

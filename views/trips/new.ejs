@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Trip</title>
-</head>
-<body>
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/new.css">
+<div class="main">
     <h1>**CREATE PAGE**</h1>
     <h2>Post a trip</h2>
     <form action="/trips" method="POST" enctype="multipart/form-data">
@@ -24,5 +18,4 @@
     
         <button>Save Trip</button>
     </form>
-</body>
-</html>
+</div>

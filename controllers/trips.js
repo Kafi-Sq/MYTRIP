@@ -7,11 +7,11 @@ const { cloudinary } = require('../cloudinary')
 
 module.exports.index = async(req, res) => {
     const trip = await Trip.find({}).populate({path: 'owner'})
-    res.render('index', {trip})
+    res.render('trips/index', {trip})
 }
 
 module.exports.newTrip = (req, res) => {
-    res.render('new')
+    res.render('trips/new')
 }
 
 module.exports.postTrip = async(req, res) => {
@@ -42,7 +42,7 @@ module.exports.getSingleTrip = async(req, res) => {
         return res.redirect('/trips')
     }
     console.log(trip)
-    res.render('show', {trip})
+    res.render('trips/show', {trip})
 }
 
 module.exports.editTrip = async(req, res) => {
@@ -52,7 +52,7 @@ module.exports.editTrip = async(req, res) => {
         req.flash('error', `Sorry, can't find that trip`)
         return res.redirect('/trips')
     }
-    res.render('edit', {trip})
+    res.render('trips/edit', {trip})
 }
 
 module.exports.postEdit = async(req, res) => {

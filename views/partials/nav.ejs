@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/stylesheets/nav.css">
+
+<nav>
+    <h1>NOMADS</h1>
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/trips">Trips</a></li>
+        <li><a href="/trips/new">New</a></li> 
+    </ul>
+    <div class="btn">
+        <% if (!currentUser) {%>
+            <button><a href="/login">Log In</a></button>
+            <button><a href="/signup">Sign Up</a></button>
+        <% } else {%>  
+            <button><a href="/logout">Log Out</a></button>
+        <% } %>
+    </div>
+</nav>

@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
-    <style>
-        .img {
-            width: 20%;
-            height: auto;
-        }
-    </style>    
+<% layout('./layouts/boilerplate') %>
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-
-</head>
-<body>
+<link rel="stylesheet" href="/stylesheets/show.css">
+<div class="main">
     <h1>**DETAILS PAGE**</h1>
     <div>
         <p><%= success %> </p>
@@ -55,6 +42,7 @@
         </form>
         <% } %> 
     </div>
+</div>
     <script>
         const trip = <%-JSON.stringify(trip)%>
     </script>
@@ -71,6 +59,3 @@
         .setLngLat(trip.geometry.coordinates)
         .addTo(map)
 </script>
-</body>
-
-</html>

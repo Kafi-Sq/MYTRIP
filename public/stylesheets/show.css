@@ -1,0 +1,8 @@
+.img {
+    width: 20%;
+    height: auto;
+}
+
+.main {
+    min-height: calc(100vh - 68.8px - 38.4px);
+}
