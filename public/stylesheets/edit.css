@@ -6,3 +6,8 @@ img{
 .main {
     min-height: calc(100vh - 68.8px - 38.4px);
 }
+
+body {
+    background-color: #373737;
+    color: white;
+}
