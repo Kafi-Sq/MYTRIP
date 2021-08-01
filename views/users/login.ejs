@@ -1,26 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-</head>
-<body>
-    <h1>Log In</h1>
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/login.css">
+<div class="main">
+    <div class="pic">
+        <img src="https://images.unsplash.com/photo-1627478120842-46459b0ac31c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80" alt="...">
+    </div>
+    <div class="info">
     <p><%= error %></p>
     <form action="/login" method="POST">
-        <div>
-            <label for="username">Username:</label>
+        <div class="mid">
+            <div class="username">
+            <label for="username">Username</label>
+            <br>
             <input type="text" name="username" id="username">
-            <br>
-            <br>
+            </div>
+            <div class="pass">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password">
             <br>
+            <input type="password" name="password" id="password">
+        </div class="Logbtn">
             <button>Log In</button>
+            <button><a href="/signup">Sign Up</a></button>
         </div>
     </form>
-    <button><a href="/signup">Sign Up</a></button>
-</body>
-</html>
+    
+</div>
+</div>

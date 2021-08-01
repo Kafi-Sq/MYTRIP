@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-</head>
-<body>
+<% layout('./layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/signup.css">
+<div class="main">
     <h1>Sign Up</h1>
     <p><%= error %></p>
     <div>
@@ -26,5 +20,4 @@
         </form>
     </div>
     <button><a href="/login">Log In</a></button>
-</body>
-</html>
+</div>

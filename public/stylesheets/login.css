@@ -1,0 +1,58 @@
+.main {
+    min-height: calc(100vh - 68.8px - 38.4px);
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+}
+
+.info {
+    width: 300px;
+    margin-top: 0;
+    background-color: #CE9E71;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.info input {
+    width: 240px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+}
+
+.pic {
+    width: 300px;
+    margin-top: 80px;
+    background-color: #CE9E71;
+    border-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.mid {
+    width: 250px;
+}
+
+
+
+.pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.username, .pass {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+
+body {
+    background-color: #373737;
+    color: white;
+}
