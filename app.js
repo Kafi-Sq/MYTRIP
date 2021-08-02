@@ -70,7 +70,7 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     res.render('home')
 })
 

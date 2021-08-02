@@ -1,0 +1,54 @@
+.main {
+    min-height: calc(100vh - 68.8px - 38.4px);
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+body {
+    background-color: #373737;
+    color: white;
+}
+
+.h1 {
+    color: white;
+    font-size: 300px;
+    padding-bottom: 0;
+}
+
+.h2 {
+    color: #CE9E71;
+    font-size: 40px;
+    position: absolute;
+    top: 370px;
+    width: 650px;
+    left: 450px;
+}
+
+.regBtn, .seeBtn, .logBtn {
+    margin-top: 40px;
+    margin-right: 20px;
+}
+
+.logBtn a {
+    color: inherit;
+}
+.regBtn a {
+    color: inherit;
+}
+.seeBtn a {
+    color: inherit;
+}
+
+.regBtn {
+    background-color: #33D260;
+    color: white;
+}
+.seeBtn {
+    background-color: #338FD2;
+    color: white;
+}
+.logBtn {
+    background-color: #D23333;
+    color: white;
+}
