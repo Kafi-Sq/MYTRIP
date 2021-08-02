@@ -1,21 +1,26 @@
 <% layout('./layouts/boilerplate') %>
-<link rel="stylesheet" href="/stylesheets/new.css">
-<div class="main">
-    <h1>**CREATE PAGE**</h1>
-    <h2>Post a trip</h2>
-    <form action="/trips" method="POST" enctype="multipart/form-data">
-    <div>
-        <label for="place">Where did you visit?</label>
-        <input type="text" name="trip[place]" id="place" required>
+    <link rel="stylesheet" href="/stylesheets/new.css">
+    <h1 class="new">Post a new trip</h1>
+    <div class="main">
+        <div class="container">
+            <form action="/trips" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="place">Where did you visit?</label>
+                    <br>
+                    <input type="text" name="trip[place]" id="place" required>
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <br>
+                    <textarea name="trip[description]" id="description" cols="30" rows="4" required></textarea>
+                </div>
+                <div>
+                    <label for="image">Image(s):</label>
+                    <br>
+                    <input class="upload" type="file" name="image" multiple>
+                </div>
+
+                <button>Save Trip</button>
+            </form>
+        </div>
     </div>
-    <div>
-        <label for="description">Description:</label>
-        <textarea name="trip[description]" id="description" cols="30" rows="4" required></textarea>
-    </div>
-    <div>
-        <input type="file" name="image" multiple>
-    </div>
-    
-        <button>Save Trip</button>
-    </form>
-</div>

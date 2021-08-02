@@ -1,8 +1,65 @@
 .main {
-    min-height: calc(100vh - 68.8px - 38.4px);
+    min-height: calc(100vh - 176px - 38.4px);
 }
+
 
 body {
     background-color: #373737;
     color: white;
+}
+
+.new {
+    font-size: 40px;
+    margin: 25px 280px;
+    color: white;
+}
+
+.container {
+    width: 700px;
+    margin: 30px auto;
+}
+
+.main {
+    margin: auto;
+}
+
+input, textarea {
+    width: 550px;
+    border-radius: 8px;
+    border: none;
+}
+
+label {
+    font-size: 20px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.upload {
+    font-size: 20px;
+    background: #525252;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+::-webkit-file-upload-button {
+    color: white;
+    background: #CE9E71;
+    border-radius: 3px;
+    border: none;
+    transition: all 0.3s ease 0s;
+}
+
+::-webkit-file-upload-button:hover {
+    transition: all 0.3s ease 0s;
+    background: #ce833d;
 }
