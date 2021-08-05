@@ -18,6 +18,9 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/users')
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 
 // connecting to Mongodb
 mongoose.connect('mongodb://localhost:27017/myTrip', {

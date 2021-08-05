@@ -1,48 +1,91 @@
 <% layout('./layouts/boilerplate') %>
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-<link rel="stylesheet" href="/stylesheets/show.css">
-<div class="main">
-    <h1>**DETAILS PAGE**</h1>
-    <div>
-        <p><%= success %> </p>
-        <p><%= deleted %> </p>
-        <h1><%= trip.place %></h1>
-        <h2><%= trip.owner.username %></h2>
-        <% for (let img of trip.images) {%>
-            <img src="<%= img.url %>" alt="...">
-        <% } %>  
-        <p><%= trip.description %></p>
-        <div id='map' style='width: 400px; height: 300px;'></div>
-        <% if(currentUser) {%> 
-        <form action="/trips/<%= trip._id %>/comments" method="POST">
-            <h2>Comments:</h2>
-            <label for="comment">Add comment</label>
-            <br>
-            <textarea name="comment[body]" id="comment" cols="30" rows="4" required></textarea>
-            <button>Add</button>
-        </form>
-        <% } %> 
+<link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <div class="main">
         <div>
-            <% for(c of trip.comments){ %>
-                <p><b><%= c.owner.username %> - </b></p> 
-                <p><%= c.body %></p>
-                <% if(currentUser && c.owner.equals(currentUser._id)) {%> 
-                <form action="/trips/<%= trip._id%>/comments/<%= c._id %>?_method=DELETE" method="POST">
-                    <button>Delete</button>
-                </form>
-                <% } %> 
-            <% } %> 
+            <p>
+                <%= success %>
+            </p>
+            <p>
+                <%= deleted %>
+            </p>
+            <div class="grid-container">
+                <div class="grid-item-1">
+                    <h1 class="title">
+                        <%= trip.place %>
+                    </h1>
+                    <h2>
+                        <%= trip.owner.username %>
+                    </h2>
+                </div>
+                <div class="grid-item-2">
+                    <% if(currentUser && trip.owner.equals(currentUser._id)) {%>
+                        <button><a href="/trips/<%= trip._id %>/edit">Edit</a></button>
+                        <form action="/trips/<%= trip._id %>?_method=DELETE" method="POST">
+                            <button>Delete</button>
+                        </form>
+                        <% } %>
+                </div>
+                <div class="container">
+                <div class="glide">
+                    <div class="glide__track" data-glide-el="track"> 
+                        
+                        <ul class="glide__slides">
+                            <% for (let img of trip.images) {%>
+                            <li class="glide__slide">
+                                <img class="img" src="<%= img.url %>" alt="">
+                                <% } %>
+                            </li>
+                        </ul>
+                        <% if (trip.images.length > 1) {%>
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
+                          </div>
+                        <% } %> 
+                    </div>
+                </div>
+            </div>
+                <div class="grid-item-4">
+                    <div id='map' style='width: 600px; height: 400px; border-radius: 5px;'></div>
+                </div>
+                <div class="grid-item-5">
+                    <h2>Description</h2>
+                    <p><%= trip.description %></p>
+                </div>
+                <div class="grid-item-6">
+                    <% if(currentUser) {%>
+                        <form action="/trips/<%= trip._id %>/comments" method="POST">
+                            <h2>Comments:</h2>
+                            <label for="comment">Add comment</label>
+                            <br>
+                            <textarea name="comment[body]" id="comment" cols="30" rows="4" required></textarea>
+                            <br>
+                            <button>Add</button>
+                        </form>
+                        <% } %>
+                            <div>
+                                <% for(c of trip.comments){ %>
+                                    <p><b>
+                                            <%= c.owner.username %> -
+                                        </b></p>
+                                    <p>
+                                        <%= c.body %>
+                                    </p>
+                                    <% if(currentUser && c.owner.equals(currentUser._id)) {%>
+                                        <form action="/trips/<%= trip._id%>/comments/<%= c._id %>?_method=DELETE"
+                                            method="POST">
+                                            <button>Delete</button>
+                                        </form>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+                </div>
+            </div>
         </div>
-        <button><a href="/trips">Go Back</a></button><br>
-        <% if(currentUser && trip.owner.equals(currentUser._id)) {%> 
-        <button><a href="/trips/<%= trip._id %>/edit">Edit</a></button>
-        <form action="/trips/<%= trip._id %>?_method=DELETE" method="POST">
-            <button>Delete</button>
-        </form>
-        <% } %> 
     </div>
-</div>
     <script>
         const trip = <%-JSON.stringify(trip)%>
     </script>
@@ -52,10 +95,18 @@
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v11', // style URL
         center: trip.geometry.coordinates, // starting position [lng, lat]
-        zoom: 9 // starting zoom
+        zoom: 10 // starting zoom
     });
 
     new mapboxgl.Marker()
         .setLngLat(trip.geometry.coordinates)
         .addTo(map)
+</script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script> -->
+<!-- <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+
+<script>
+  new Glide('.glide').mount()
 </script>

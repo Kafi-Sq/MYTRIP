@@ -39,8 +39,10 @@ const tripSchema = new Schema({
 tripSchema.virtual('properties.popUpMarkup').get(function () {
     return `
     <strong><a href="/trips/${this._id}">${this.place}</a><strong>
-    <p>${this.owner.username.substring(0, 20)}</p>`
+    <p class="popUpMarkup">${this.owner.username}</p>
+    `
 });
+
 
 tripSchema.post('findOneAndDelete', async function(doc) {
     if(doc){

@@ -41,7 +41,6 @@ module.exports.getSingleTrip = async(req, res) => {
         req.flash('error', `Sorry, can't find that trip`)
         return res.redirect('/trips')
     }
-    console.log(trip)
     res.render('trips/show', {trip})
 }
 
