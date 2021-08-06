@@ -109,8 +109,9 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-// listening 
-app.listen(8080, () => {
-    console.log('Listening: 8080')
+// listening
+const port = process.env.PORT || 8080 
+app.listen(port, () => {
+    console.log(`Listening on port: ${port}`)
 })
 /* final commit */
