@@ -3,23 +3,27 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-    <div id="cluster-map" style="width: 100%; height: 300px;"></div>
+    <div id="cluster-map" style="width: 100%; height: 400px;"></div>
     
-    <h1>**INDEX PAGE**</h1>
     <p><%= success %> </p>
-    <h3>All trips</h3>
-    <% if (currentUser) {%> 
-    <p><%= currentUser.username %></p>
-    <% } %> 
     <p><%= deleted %> </p>
-    <a href="/trips/new">Post a trip</a>
+    <h1 class="title">All Trips</h1>
+    <div class="container">
     <% for (let t of trip){ %>
-        <li><a href="/trips/<%= t._id %>"><%= t.place %></a></li>
-        <p><%= t.owner.username %></p>
-    <% } %> 
+        <div class="card">
+            <p><%= t.owner.username %></p>
+            <p class="place"><a href="/trips/<%= t._id %>"><%= t.place %></a></p>
+            <% if (t.images.length) {%> 
+                <a href="/trips/<%= t._id %>"><img class="img-fluid" src="<%= t.images[0].url%>" alt=""></a>
+                <% }else { %> 
+                    <img class="img-fluid"  src="https://res.cloudinary.com/nbrvchhc/image/upload/v1626724543/YelpCamp/lywatfosmgujrqgvoibb.jpg" alt="">
+                <% } %> 
+        </div>
+    <% } %>
+</div> 
 </div>
     
-    
+    <!-- /* final commit */ -->
 
 
 

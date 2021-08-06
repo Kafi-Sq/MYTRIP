@@ -34,5 +34,6 @@ module.exports.postLogin = (req, res) => {
 module.exports.logout = (req, res) => {
     req.logOut()
     req.flash('success', 'Bye!')
-    res.redirect('/trips')
+    res.redirect('/home')
 }
+// final commit

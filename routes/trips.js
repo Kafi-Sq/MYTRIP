@@ -24,3 +24,4 @@ router.get('/:id/edit', isLoggedIn, isOwner, catchAsync(tripController.editTrip)
 
 
 module.exports = router
+/* final commit */

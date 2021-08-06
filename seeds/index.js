@@ -11,6 +11,7 @@ mongoose.connect('mongodb://localhost:27017/myTrip', {
     useUnifiedTopology: true,
     useFindAndModify: false
 })
+/* final commit */
 
 mongoose.connection
     .on("error", console.error.bind(console, "connection error:"))
@@ -20,20 +21,31 @@ mongoose.connection
 
 const seedDB = async () => {
     await Trip.deleteMany({})
-    for (let i = 0; i < 10; i++){
+    for (let i = 0; i < 100; i++){
         const random1000 = Math.floor(Math.random() * 1000)
         const trip = new Trip({
-            owner: "60ff6faced668109ecf9b7d6",
+            owner: "610c9b883ad652173ca963d7",
             place: `${cities[random1000].city}, ${cities[random1000].state}`,
             description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, nisi',
             images: [{
-                url: 'https://res.cloudinary.com/nbrvchhc/image/upload/v1627352845/NOMADS/zriul4yif33glk8jujik.jpg',
-                filename: 'NOMADS/zriul4yif33glk8jujik'
+                url: 'https://res.cloudinary.com/nbrvchhc/image/upload/v1628188672/NOMADS/dkwu2a29pkp51ezdqkhn.jpg',
+                filename: 'NOMADS/pcwkbwxusqwjfeskncfk'
               },
               {
-                url: 'https://res.cloudinary.com/nbrvchhc/image/upload/v1627352845/NOMADS/aek2a3eo3yyiudb9vs2y.jpg',
-                filename: 'NOMADS/aek2a3eo3yyiudb9vs2y'
-              }]
+                url: 'https://res.cloudinary.com/nbrvchhc/image/upload/v1628207686/NOMADS/pcwkbwxusqwjfeskncfk.jpg',
+                filename: 'NOMADS/dkwu2a29pkp51ezdqkhn'
+              },
+              {
+                url: 'https://res.cloudinary.com/nbrvchhc/image/upload/v1627929161/NOMADS/rjx1mdpdxytvl05qocff.jpg',
+                filename: 'NOMADS/rjx1mdpdxytvl05qocff'
+              }],
+              geometry: {
+                type: "Point",
+                coordinates: [
+                    cities[random1000].longitude,
+                    cities[random1000].latitude,
+                ]
+            },
         })
     await trip.save()
     console.log(trip)

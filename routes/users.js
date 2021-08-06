@@ -15,3 +15,4 @@ router.post('/login', passport.authenticate('local', {failureFlash: true, failur
 router.get('/logout', userController.logout)
 
 module.exports = router
+/* final commit */

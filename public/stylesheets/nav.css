@@ -53,6 +53,9 @@ ul li a:hover {
 .btn {
     margin-left: auto;
 }
+.currentUser {
+    color: #ca6200;
+}
 
 button {
     padding: 8px 25px;
@@ -67,3 +70,4 @@ button:hover {
     background-color: #ce833d;
     color: white;
 }
+/* final commit */

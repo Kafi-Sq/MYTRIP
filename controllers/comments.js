@@ -19,3 +19,4 @@ module.exports.deleteComment = async(req, res) => {
     req.flash('delete', 'Deleted!')
     res.redirect(`/trips/${id}`)
 }
+// final commit

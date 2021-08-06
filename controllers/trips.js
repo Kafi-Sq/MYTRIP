@@ -80,3 +80,4 @@ module.exports.deleteTrip = async(req, res) => {
     req.flash('delete', 'Deleted Trip!')
     res.redirect('/trips')
 }
+// final commit

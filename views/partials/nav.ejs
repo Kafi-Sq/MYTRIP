@@ -5,7 +5,10 @@
     <ul>
         <li><a href="/home">Home</a></li>
         <li><a href="/trips">Trips</a></li>
-        <li><a href="/trips/new">New</a></li> 
+        <li><a href="/trips/new">New</a></li>
+        <% if (currentUser) {%> 
+            <li class="currentUser"><%= currentUser.username %></li>
+        <% } %> 
     </ul>
     <div class="btn">
         <% if (!currentUser) {%>
@@ -16,3 +19,4 @@
         <% } %>
     </div>
 </nav>
+<!-- /* final commit */ -->

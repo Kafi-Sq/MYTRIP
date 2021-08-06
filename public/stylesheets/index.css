@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital@0;1&display=swap');
 .main {
     min-height: calc(100vh - 68.8px - 38.4px);
 }
@@ -10,3 +11,37 @@ body {
 .popUpMarkup {
     color: black;
 }
+
+.title {
+    font-size: 60px;
+    margin: 10px 0px 0 30px;
+    color: white;
+    font-family: 'STIX Two Text', serif;
+}
+
+.container {
+    width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card {
+    width: 400px;
+}
+
+.card img {
+    width:  400px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.place a{
+    color: #CE9E71;
+    font-size: 30px;
+}
+/* final commit */
