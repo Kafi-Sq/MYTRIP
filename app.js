@@ -18,13 +18,12 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/users')
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
-const MongoDBStore = require("connect-mongo")(session);
-// connecting to Mongodb
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/myTrip';
+// connecting to Mongodb
+const MongoDBStore = require("connect-mongo")(session);
+
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/myTrip'
+
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -46,13 +45,13 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
-const secret = process.env.SECRETS || 'thisshouldbeabettersecret!';
+const secret = process.env.SECRETS || 'Changethis'
 
 const store = new MongoDBStore({
     url: dbUrl,
     secret,
     touchAfter: 24 * 60 * 60
-});
+})
 
 store.on("error", function (e) {
     console.log("SESSION STORE ERROR", e)
@@ -66,12 +65,10 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
-
 app.use(session(sessionConfig))
 app.use(flash())
 
@@ -113,8 +110,7 @@ app.use((err, req, res, next) => {
 })
 
 // listening 
-const port = process.env.PORT || 3000
-app.listen(port, () => {
-    console.log(`Listening on port: ${port}`)
+app.listen(8080, () => {
+    console.log('Listening: 8080')
 })
 /* final commit */
