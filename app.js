@@ -46,7 +46,7 @@ app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
-const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
+const secret = process.env.SECRETS || 'thisshouldbeabettersecret!';
 
 const store = new MongoDBStore({
     url: dbUrl,
