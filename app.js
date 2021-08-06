@@ -88,14 +88,15 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.get('/home', (req, res) => {
-    res.render('home')
-})
+
 
 app.use('/', userRoutes)
 app.use('/trips', tripRoutes)
 app.use('/trips/:id/comments', commentRoutes)
 
+app.get('/', (req, res) => {
+    res.render('home')
+})
 
 // error handling
 
