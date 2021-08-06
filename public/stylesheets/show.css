@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital@0;1&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .main {
     min-height: calc(100vh - 68.8px - 38.4px);
@@ -58,6 +58,61 @@ body {
 }
 
 .grid-item-5 p {
-    width: 400px;
-    margin-top: 5px
+    width: 550px;
+    margin-top: 5px;
+    margin: 15px;
+    padding: 5px;
+    font-size: 25px;
+}
+.grid-item-5 h2, .grid-item-6 h2{
+    font-size: 30px;
+    margin: 15px;
+    padding: 5px;
+}
+
+.grid-item-6 h2{
+    margin-bottom: 0;
+}
+
+.styles, .commentForm {
+    width: 600px;
+    background-color: #4b4b4b;
+    border-radius: 10px;
+}
+
+textarea {
+    border: none;
+    border-radius: 3px;
+    width: 550px;
+    height: 30px;
+    margin: 0 0 10px 20px;
+}
+
+.grid-item-6 label {
+    margin: 0 0 10px 20px;
+}
+
+.add {
+    margin: 0 0 10px 20px;
+}
+
+.grid-item-6 ul {
+    display: flex;
+    background-color: #4b4b4b;
+    width: 600px;
+    border-radius: 3px;
+    margin: 15px 0;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.grid-item-6 li {
+    color: white;
+    font-size: 16px;
+    font-family: 'STIX Two Text', serif;
+}
+
+.grid-item-6 ul button {
+    background-color: rgb(248, 74, 74);
 }

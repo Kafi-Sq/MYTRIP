@@ -1,5 +1,6 @@
 <% layout('./layouts/boilerplate') %>
 <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="/stylesheets/show.css">
@@ -52,35 +53,34 @@
                     <div id='map' style='width: 600px; height: 400px; border-radius: 5px;'></div>
                 </div>
                 <div class="grid-item-5">
-                    <h2>Description</h2>
+                    <div class="styles">
+                    <h2>Description-</h2>
                     <p><%= trip.description %></p>
+                </div>
                 </div>
                 <div class="grid-item-6">
                     <% if(currentUser) {%>
-                        <form action="/trips/<%= trip._id %>/comments" method="POST">
+                        <form class="commentForm" action="/trips/<%= trip._id %>/comments" method="POST">
                             <h2>Comments:</h2>
-                            <label for="comment">Add comment</label>
+                            <label for="comment">Add a comment</label>
                             <br>
                             <textarea name="comment[body]" id="comment" cols="30" rows="4" required></textarea>
                             <br>
-                            <button>Add</button>
+                            <button class="add">Add</button>
                         </form>
                         <% } %>
-                            <div>
+                            <div class="comments">
                                 <% for(c of trip.comments){ %>
-                                    <p><b>
-                                            <%= c.owner.username %> -
-                                        </b></p>
-                                    <p>
-                                        <%= c.body %>
-                                    </p>
-                                    <% if(currentUser && c.owner.equals(currentUser._id)) {%>
-                                        <form action="/trips/<%= trip._id%>/comments/<%= c._id %>?_method=DELETE"
-                                            method="POST">
-                                            <button>Delete</button>
-                                        </form>
+                                    <ul>
+                                        <li><b></b><%= c.owner.username %></b> - <br> <%= c.body %></li>
+                                        <% if(currentUser && c.owner.equals(currentUser._id)) {%>
+                                            <form action="/trips/<%= trip._id%>/comments/<%= c._id %>?_method=DELETE"
+                                                method="POST">
+                                                <button><i class="far fa-trash-alt"></i></button>
+                                            </form>
                                         <% } %>
-                                            <% } %>
+                                    </ul>
+                                <% } %>
                             </div>
                 </div>
             </div>
