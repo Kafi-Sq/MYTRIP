@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #373737;
+    background-color: #070707;
     color: white;
 }
 
@@ -41,12 +41,12 @@ body {
 }
 
 .regBtn {
-    background-color: #33D260;
-    color: white;
+    background-color: #CE9E71;
+    color: rgb(36, 36, 36);
 }
 .seeBtn {
-    background-color: #338FD2;
-    color: white;
+    background-color: #CE9E71;
+    color: rgb(36, 36, 36);
 }
 .logBtn {
     background-color: #D23333;
